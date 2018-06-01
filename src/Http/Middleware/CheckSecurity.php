@@ -77,6 +77,42 @@ class CheckSecurity
      */
     public function handle(Request $request, Closure $next)
     {
+        /*dd('here');*/
+        /*dd($this->guard->user());*/
+        /*dd($this->guard);*/
+/*        SessionGuard {#1154 ▼
+        #name: "web"
+        #lastAttempted: null
+        #viaRemember: false
+        #session: Store {#1157 ▶}
+        #cookie: CookieJar {#1158 ▶}
+        #request: Request {#42 ▶}
+        #events: Dispatcher {#26 ▶}
+        #loggedOut: false
+        #recallAttempted: false
+        #user: null
+        #provider: EloquentUserProvider {#1150 ▼
+        #hasher: BcryptHasher {#1153 ▶}
+        #model: "Anomaly\UsersModule\User\UserModel"
+    }
+}*/
+        //dd($this->guard->user()->unique_sess_id);
+         //dd(\Session::get('new_unique_sessid'));
+
+            if($this->guard->user() != null) {
+                /*echo $this->guard->user()->unique_sess_id;
+                echo "</br>";
+                echo \Session::get('new_unique_sessid');
+
+                die;*/
+
+                if ($this->guard->user()->unique_sess_id != \Session::get('new_unique_sessid')) {
+                    \Session::flush();
+                    return $this->redirect('/admin/login')->send();
+                }
+            }
+
+
         $response = $this->security->check($this->guard->user());
 
         if ($response instanceof Response) {

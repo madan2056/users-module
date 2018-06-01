@@ -40,9 +40,6 @@ class UserFormFields
                         'handler' => ValidatePassword::class,
                     ],
                 ],
-                'attributes' => [
-                    'autocomplete' => 'new-password',
-                ],
             ],
             'activated',
             'enabled',

@@ -1,6 +1,7 @@
 <?php namespace Anomaly\UsersModule\User\Authenticator\Contract;
 
 use Anomaly\UsersModule\User\Contract\UserInterface;
+/*use Sbweb\UserModule\User\Contract\UserInterface;*/
 
 /**
  * Interface AuthenticatorExtensionInterface

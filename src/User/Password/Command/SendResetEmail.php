@@ -1,6 +1,7 @@
 <?php namespace Anomaly\UsersModule\User\Password\Command;
 
-use Anomaly\UsersModule\User\Contract\UserInterface;
+/*use Anomaly\UsersModule\User\Contract\UserInterface;*/
+use Sbweb\UserModule\User\Contract\UserInterface;
 use Anomaly\UsersModule\User\Notification\ResetYourPassword;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Notifications\Notifiable;

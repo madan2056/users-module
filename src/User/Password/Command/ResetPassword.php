@@ -1,7 +1,8 @@
 <?php namespace Anomaly\UsersModule\User\Password\Command;
 
 use Anomaly\Streams\Platform\Model\EloquentModel;
-use Anomaly\UsersModule\User\Contract\UserInterface;
+/*use Anomaly\UsersModule\User\Contract\UserInterface;*/
+use Sbweb\UserModule\User\Contract\UserInterface;
 use Anomaly\UsersModule\User\Contract\UserRepositoryInterface;
 
 
@@ -60,6 +61,9 @@ class ResetPassword
     {
         $user = $users->findByResetCode($this->code);
 
+
+
+
         if (!$user) {
             return false;
         }
@@ -69,7 +73,7 @@ class ResetPassword
         }
 
         $this->user->setAttribute('reset_code', null);
-        $this->user->setAttribute('password', $this->password);
+        $this->user->setAttribute('password', bcrypt($this->password));
 
         $users->save($this->user);
 

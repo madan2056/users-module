@@ -1,7 +1,8 @@
 <?php namespace Anomaly\UsersModule\User;
 
 use Anomaly\Streams\Platform\Entry\EntryRepository;
-use Anomaly\UsersModule\User\Contract\UserInterface;
+/*use Anomaly\UsersModule\User\Contract\UserInterface;*/
+use Sbweb\UserModule\User\Contract\UserInterface;
 use Anomaly\UsersModule\User\Contract\UserRepositoryInterface;
 
 /**
@@ -26,9 +27,10 @@ class UserRepository extends EntryRepository implements UserRepositoryInterface
      *
      * @param UserModel $model
      */
-    function __construct(UserModel $model)
+    function __construct(\Sbweb\UserModule\User\UserModel $model)
     {
         $this->model = $model;
+
     }
 
     /**
@@ -64,6 +66,7 @@ class UserRepository extends EntryRepository implements UserRepositoryInterface
     {
         return $this->model->where('email', $email)->first();
     }
+
 
     /**
      * Find a user by their username.
@@ -104,13 +107,13 @@ class UserRepository extends EntryRepository implements UserRepositoryInterface
      * @param  UserInterface $user
      * @return bool
      */
-    public function touchLastActivity(UserInterface $user)
+   /* public function touchLastActivity(UserInterface $user)
     {
         $user->last_activity_at = time();
         $user->ip_address       = request()->ip();
 
         return $this->save($user);
-    }
+    }*/
 
     /**
      * Touch a user's last login.
@@ -118,10 +121,10 @@ class UserRepository extends EntryRepository implements UserRepositoryInterface
      * @param  UserInterface $user
      * @return bool
      */
-    public function touchLastLogin(UserInterface $user)
+   /* public function touchLastLogin(UserInterface $user)
     {
         $user->last_login_at = time();
 
         return $this->save($user);
-    }
+    }*/
 }

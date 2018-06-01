@@ -3,7 +3,9 @@
 use Anomaly\Streams\Platform\Http\Controller\PublicController;
 use Anomaly\Streams\Platform\Ui\ControlPanel\Component\Navigation\NavigationCollection;
 use Anomaly\UsersModule\User\Login\LoginFormBuilder;
+use Anomaly\UsersModule\User\Password\PasswordFormBuilder;
 use Anomaly\UsersModule\User\UserAuthenticator;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Routing\Redirector;
 
@@ -48,6 +50,21 @@ class LoginController extends PublicController
             ->render();
     }
 
+
+    /*public function changePassword()
+    {
+        return $this->view->make('anomaly.module.users::password/reset');
+    }*/
+  /*  public function getAbsentReason( NavigationCollection $navigation,
+                                     LoginFormBuilder $form,
+                                     Redirector $redirect,
+                                     Guard $auth)
+    {
+        dd('die');
+    }*/
+
+
+
     /**
      * Log the user out.
      *
@@ -64,5 +81,10 @@ class LoginController extends PublicController
         $this->messages->success('anomaly.module.users::message.logged_out');
 
         return redirect('admin/login');
+    }
+
+    public function getAbsentReason()
+    {
+        dd('here');
     }
 }

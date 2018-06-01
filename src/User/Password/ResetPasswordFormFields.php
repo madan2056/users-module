@@ -19,9 +19,18 @@ class ResetPasswordFormFields
      */
     public function handle(ResetPasswordFormBuilder $builder)
     {
-        $builder->setFields([]);
+        $request_uri = app('request')->getRequestUri();
 
-        if (!$builder->getEmail()) {
+
+        $full_url = explode('/',$request_uri);
+        $token = $full_url[3];
+
+
+
+        /*dd('here');*/
+
+
+    /*    if (!$builder->getEmail()) {
             $builder->addField(
                 'email',
                 [
@@ -41,9 +50,9 @@ class ResetPasswordFormFields
                     'required' => true,
                 ]
             );
-        }
+        }*/
 
-        $builder->addFields(
+        $builder->setFields(
             [
                 [
                     'field'      => 'password',
@@ -52,13 +61,6 @@ class ResetPasswordFormFields
                     'required'   => true,
                     'rules'      => [
                         'confirmed',
-                        'valid_password',
-                    ],
-                    'validators' => [
-                        'valid_password' => [
-                            'message' => false,
-                            'handler' => ValidatePassword::class,
-                        ],
                     ],
                     'config'     => [
                         'type' => 'password',
@@ -73,7 +75,16 @@ class ResetPasswordFormFields
                         'type' => 'password',
                     ],
                 ],
+                [
+                    'field'  => 'reset_token',
+                    'type'   => 'anomaly.field_type.text',
+                    'hidden' => true,
+                    'config' => [
+                        'default_value' => $token,
+                    ]
+                ]
             ]
         );
+
     }
 }

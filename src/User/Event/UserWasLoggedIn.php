@@ -1,6 +1,8 @@
 <?php namespace Anomaly\UsersModule\User\Event;
 
-use Anomaly\UsersModule\User\Contract\UserInterface;
+/*use Anomaly\UsersModule\User\Contract\UserInterface;*/
+use Illuminate\Database\Query\Builder;
+use Sbweb\UserModule\User\Contract\UserInterface;
 
 /**
  * Class UserWasLoggedIn

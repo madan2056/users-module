@@ -1,6 +1,7 @@
 <?php namespace Anomaly\UsersModule\User\Event;
 
-use Anomaly\UsersModule\User\Contract\UserInterface;
+/*use Anomaly\UsersModule\User\Contract\UserInterface;*/
+use Sbweb\UserModule\User\Contract\UserInterface;
 
 /**
  * Class UserWasLoggedOut

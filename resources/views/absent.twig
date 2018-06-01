@@ -1,0 +1,18 @@
+{% extends layout('users') %}
+
+{% block content %}
+    <div class="container">
+        <div class="col-lg-6 col-lg-offset-3">
+
+            {% set form = form('absent').skips(['status','user','from_date','to_date','is_approved','approved_by','id_ref','arrivaltime'])
+            .redirect(request_get('redirect', 'admin/dashboard')).get() %}
+
+            {{ form.open|raw }}
+
+            {{ form|raw }}
+
+            {{ form.close|raw }}
+
+        </div>
+    </div>
+{% endblock %}

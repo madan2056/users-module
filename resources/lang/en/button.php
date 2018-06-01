@@ -12,4 +12,5 @@ return [
     'view_profile'   => 'View Profile',
     'login_as_user'  => 'Login as User',
     'reset_password' => 'Reset Password',
+    'new_user_type' => 'New User type',
 ];

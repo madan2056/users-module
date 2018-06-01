@@ -21,9 +21,8 @@ class LoginFormFields
     public function handle(LoginFormBuilder $builder, Repository $config)
     {
         $method = $config->get('anomaly.module.users::config.login');
-
         if ($method == 'username') {
-            $login = [
+            $login1 = [
                 'username' => [
                     'label'    => 'anomaly.module.users::field.username.name',
                     'type'     => 'anomaly.field_type.text',
@@ -31,7 +30,7 @@ class LoginFormFields
                 ],
             ];
         } else {
-            $login = [
+            $login1 = [
                 'email' => [
                     'label'    => 'anomaly.module.users::field.email.name',
                     'type'     => 'anomaly.field_type.email',
@@ -42,7 +41,7 @@ class LoginFormFields
 
         $builder->setFields(
             array_merge(
-                $login,
+                $login1,
                 [
                     'password'    => [
                         'label'      => 'anomaly.module.users::field.password.name',

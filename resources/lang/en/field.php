@@ -31,7 +31,7 @@ return [
         'instructions' => 'The username is used for uniquely identifying and displaying this user.',
     ],
     'email'            => [
-        'name'         => 'Email',
+        'name'         => 'Email Field',
         'instructions' => 'The email is used for logging in.',
     ],
     'password'         => [

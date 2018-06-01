@@ -1,8 +1,11 @@
 <?php namespace Anomaly\UsersModule\User\Password\Command;
 
 use Anomaly\Streams\Platform\Model\EloquentModel;
-use Anomaly\UsersModule\User\Contract\UserInterface;
-use Anomaly\UsersModule\User\Contract\UserRepositoryInterface;
+/*use Anomaly\UsersModule\User\Contract\UserInterface;*/
+use Sbweb\UserModule\User\Contract\UserInterface;
+/*use Anomaly\UsersModule\User\Contract\UserRepositoryInterface;*/
+use Sbweb\UserModule\User\Contract\UserRepositoryInterface;
+
 
 
 /**

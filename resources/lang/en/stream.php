@@ -7,4 +7,7 @@ return [
     'roles' => [
         'name' => 'Roles',
     ],
+    'user_types' => [
+        'name' => 'User types',
+    ],
 ];

@@ -71,6 +71,23 @@ class AnomalyModuleUsersCreateUsersFields extends Migration
                 'related' => RoleModel::class,
             ],
         ],
+        'title' => 'anomaly.field_type.text',
+        'department' => [
+            'type' => 'anomaly.field_type.relationship',
+            'config' => [
+                'title_name' => 'title',
+                'related' => \Sbweb\HrModule\Department\DepartmentModel::class,
+            ],
+        ],
+        'user_level' => 'anomaly.field_type.integer',
+        'status' => [
+            'type' => 'anomaly.field_type.select',
+            'config' => [
+                'options' => [1 => 'enable', 0 => 'disable'],
+                'default_value' => 1,
+                'mode' => 'dropdown',
+            ]
+        ],
     ];
 
 }

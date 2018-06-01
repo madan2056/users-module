@@ -1,6 +1,8 @@
 <?php namespace Anomaly\UsersModule\User\Security\Contract;
 
-use Anomaly\UsersModule\User\Contract\UserInterface;
+/*use Anomaly\UsersModule\User\Contract\UserInterface;*/
+/*use Sbweb\UserModule\User\Contract\UserInterface;*/
+use Sbweb\UserModule\User\Contract\UserInterface;
 use Symfony\Component\HttpFoundation\Response;
 
 /**

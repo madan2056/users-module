@@ -29,7 +29,10 @@ class ResetPasswordFormHandler
         MessageBag $messages,
         UserPassword $password
     ) {
-        $user = $users->findByEmail($builder->getEmail());
+        /*dd(app('request'));*/
+        $user = $users->findByResetCode(app('request')->get('reset_token'));
+
+        /*dd($user);*/
 
         /*
          * If we can't find the user by the email
@@ -42,11 +45,12 @@ class ResetPasswordFormHandler
             return;
         }
 
+
         /*
          * If we can't successfully reset the
          * provided user then back back to the form.
          */
-        if (!$password->reset($user, $builder->getCode(), $builder->getFormValue('password'))) {
+        if (!$password->reset($user, app('request')->get('reset_token'), $builder->getFormValue('password'))) {
 
             $messages->error(trans('anomaly.module.users::error.reset_password'));
 

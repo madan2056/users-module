@@ -1,10 +1,8 @@
 <?php namespace Anomaly\UsersModule\User\Table;
 
 use Anomaly\Streams\Platform\Ui\Table\TableBuilder;
-use Anomaly\UsersModule\User\Table\Action\Activate;
 use Anomaly\UsersModule\User\Table\Filter\StatusFilterQuery;
 use Anomaly\UsersModule\User\Table\View\OnlineQuery;
-use Anomaly\UsersModule\User\Table\View\PendingQuery;
 
 /**
  * Class UserTableBuilder
@@ -23,7 +21,7 @@ class UserTableBuilder extends TableBuilder
      */
     protected $views = [
         'all',
-        'online'  => [
+        'online' => [
             'query'   => OnlineQuery::class,
             'text'    => 'anomaly.module.users::view.online',
             'columns' => [
@@ -31,48 +29,6 @@ class UserTableBuilder extends TableBuilder
                 'display_name',
                 'username',
                 'email',
-            ],
-        ],
-        'pending' => [
-            'query'   => PendingQuery::class,
-            'text'    => 'anomaly.module.users::view.pending',
-            'columns' => [
-                'created_at' => [
-                    'wrapper' => '<strong>{value.datetime}</strong><br><small>{value.timeago}</small>',
-                    'value'   => [
-                        'datetime' => 'entry.created_at_datetime',
-                        'timeago'  => 'entry.created_at.diffForHumans()',
-                    ],
-                ],
-                'display_name',
-                'username',
-                'email',
-            ],
-            'filters' => [
-                'search' => [
-                    'filter' => 'search',
-                    'fields' => [
-                        'display_name',
-                        'username',
-                        'email',
-                    ],
-                ],
-            ],
-            'buttons' => [
-                'edit',
-            ],
-            'actions' => [
-                'activate' => [
-                    'handler' => Activate::class,
-                    'type'    => 'success',
-                    'icon'    => 'check',
-                ],
-                'delete',
-            ],
-            'options' => [
-                'order_by' => [
-                    'created_at' => 'DESC',
-                ],
             ],
         ],
         'trash',
@@ -122,7 +78,7 @@ class UserTableBuilder extends TableBuilder
         'display_name',
         'username',
         'email',
-        'status'     => [
+        'status' => [
             'value' => 'entry.status_label',
         ],
     ];

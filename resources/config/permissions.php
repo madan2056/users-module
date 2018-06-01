@@ -19,4 +19,9 @@ return [
     'settings' => [
         'manage',
     ],
+    'user_types' => [
+        'read',
+        'write',
+        'delete',
+    ],
 ];

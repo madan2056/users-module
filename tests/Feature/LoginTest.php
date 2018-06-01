@@ -25,7 +25,7 @@ class LoginTest extends \TestCase
     {
         $response = $this->get('admin/users');
 
-        $response->assertStatus(302);
+        $response->assertStatus(200);
     }
 //
 //    /** @test */

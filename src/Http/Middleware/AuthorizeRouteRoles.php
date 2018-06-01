@@ -7,7 +7,6 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Routing\Route;
-use Illuminate\Session\Store;
 
 /**
  * Class AuthorizeRouteRoles
@@ -34,13 +33,6 @@ class AuthorizeRouteRoles
     protected $route;
 
     /**
-     * The session store.
-     *
-     * @var Store
-     */
-    protected $session;
-
-    /**
      * The redirect utility.
      *
      * @var Redirector
@@ -59,20 +51,13 @@ class AuthorizeRouteRoles
      *
      * @param Guard      $auth
      * @param Route      $route
-     * @param Store      $session
      * @param Redirector $redirect
      * @param MessageBag $messages
      */
-    public function __construct(
-        Guard $auth,
-        Route $route,
-        Store $session,
-        Redirector $redirect,
-        MessageBag $messages
-    ) {
+    public function __construct(Route $route, Redirector $redirect, MessageBag $messages, Guard $auth)
+    {
         $this->auth     = $auth;
         $this->route    = $route;
-        $this->session  = $session;
         $this->redirect = $redirect;
         $this->messages = $messages;
     }
@@ -105,15 +90,10 @@ class AuthorizeRouteRoles
         if ($role && (!$user || !$user->hasAnyRole($role))) {
 
             $redirect = array_get($this->route->getAction(), 'anomaly.module.users::redirect');
-            $intended = array_get($this->route->getAction(), 'anomaly.module.users::intended');
             $message  = array_get($this->route->getAction(), 'anomaly.module.users::message');
 
             if ($message) {
                 $this->messages->error($message);
-            }
-
-            if ($intended !== false) {
-                $this->session->put('url.intended', $request->fullUrl());
             }
 
             if ($redirect) {
@@ -128,6 +108,8 @@ class AuthorizeRouteRoles
 
             abort(403);
         }
+
+
 
         return $next($request);
     }

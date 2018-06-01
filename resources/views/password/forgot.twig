@@ -1,10 +1,18 @@
 {% extends layout('users') %}
 
 {% block content %}
-    <div class="container">
+    <div class="container forgetpassword">
 
         <div class="col-lg-6 col-lg-offset-3">
-            {{ form('forgot_password').redirect(request_get('redirect', '/'))|raw }}
+            {#{{ form('forgot_password').redirect(request_get('redirect', '/'))|raw }}#}
+            {% set form = form('forgot_password')
+                            .redirect(request_get('redirect', '/')).get() %}
+
+            {{ form.open|raw }}
+
+            {{ form|raw }}
+
+            {{ form.close|raw }}
         </div>
 
     </div>

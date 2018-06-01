@@ -1,7 +1,8 @@
 <?php namespace Anomaly\UsersModule\User;
 
 use Anomaly\Streams\Platform\Addon\Extension\ExtensionCollection;
-use Anomaly\UsersModule\User\Contract\UserInterface;
+/*use Anomaly\UsersModule\User\Contract\UserInterface;*/
+use Sbweb\UserModule\User\Contract\UserInterface;
 use Anomaly\UsersModule\User\Event\SecurityCheckHasFailed;
 use Anomaly\UsersModule\User\Security\Contract\SecurityCheckInterface;
 use Illuminate\Contracts\Container\Container;
@@ -75,6 +76,9 @@ class UserSecurity
     {
         $extensions = $this->extensions->search('anomaly.module.users::security_check.*');
 
+
+
+
         /* @var SecurityCheckInterface $extension */
         foreach ($extensions as $extension) {
 
@@ -105,7 +109,10 @@ class UserSecurity
      */
     public function check(UserInterface $user = null)
     {
+
         $extensions = $this->extensions->search('anomaly.module.users::security_check.*');
+
+
 
         /* @var SecurityCheckInterface $extension */
         foreach ($extensions as $extension) {
@@ -117,9 +124,12 @@ class UserSecurity
 
             $response = $extension->check($user);
 
+
             if ($response === true) {
                 continue;
             }
+
+
 
             $this->events->fire(new SecurityCheckHasFailed($extension));
 

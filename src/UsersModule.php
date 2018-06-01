@@ -45,6 +45,11 @@ class UsersModule extends Module
                 ],
             ],
         ],
+        'user_types' => [
+            'buttons' => [
+                'new_user_type',
+            ],
+        ],
     ];
 
     /**

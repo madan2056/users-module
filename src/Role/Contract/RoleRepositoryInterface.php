@@ -19,14 +19,14 @@ interface RoleRepositoryInterface extends EntryRepositoryInterface
      *
      * @return RoleCollection
      */
-    public function allButAdmin();
+   /* public function allButAdmin();*/
 
     /**
      * Return all but the admin and guest role.
      *
      * @return RoleCollection
      */
-    public function allButAdminAndGuest();
+    /*public function allButAdminAndGuest();*/
 
     /**
      * Find a role by it's slug.
@@ -34,7 +34,7 @@ interface RoleRepositoryInterface extends EntryRepositoryInterface
      * @param $slug
      * @return null|RoleInterface
      */
-    public function findBySlug($slug);
+    /*public function findBySlug($slug);*/
 
     /**
      * Find a role by a permission key.
@@ -42,7 +42,7 @@ interface RoleRepositoryInterface extends EntryRepositoryInterface
      * @param $permission
      * @return null|EntryCollection
      */
-    public function findByPermission($permission);
+    /*public function findByPermission($permission);*/
 
     /**
      * Update permissions for a role.
@@ -51,5 +51,5 @@ interface RoleRepositoryInterface extends EntryRepositoryInterface
      * @param  array         $permissions
      * @return RoleInterface
      */
-    public function updatePermissions(RoleInterface $role, array $permissions);
+    /*public function updatePermissions(RoleInterfac $role, array $permissions);*/
 }

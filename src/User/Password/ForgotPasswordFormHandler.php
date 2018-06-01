@@ -1,7 +1,8 @@
 <?php namespace Anomaly\UsersModule\User\Password;
 
 use Anomaly\Streams\Platform\Message\MessageBag;
-use Anomaly\UsersModule\User\Contract\UserRepositoryInterface;
+/*use Anomaly\UsersModule\User\Contract\UserRepositoryInterface;*/
+use Sbweb\UserModule\User\Contract\UserRepositoryInterface;
 use Anomaly\UsersModule\User\UserPassword;
 use Illuminate\Contracts\Config\Repository;
 
@@ -42,6 +43,7 @@ class ForgotPasswordFormHandler
         }
 
         $password->forgot($user);
+
         $password->send($user, $builder->getFormOption('reset_redirect'));
 
         $messages->success($builder->getFormOption('success_message'));

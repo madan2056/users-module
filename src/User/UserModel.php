@@ -268,6 +268,7 @@ class UserModel extends UsersUsersEntryModel implements UserInterface, \Illumina
         return $this->activated;
     }
 
+
     /**
      * Return the enabled flag.
      *

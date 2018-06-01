@@ -32,6 +32,7 @@ class LoginController extends PublicController
         return $this->view->make('anomaly.module.users::login');
     }
 
+
     /**
      * Logout the active user.
      *

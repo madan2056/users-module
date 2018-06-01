@@ -32,4 +32,12 @@ return [
             'manage' => 'Can manage addon settings.',
         ],
     ],
+    'user_types' => [
+        'name'   => 'User types',
+        'option' => [
+            'read'   => 'Can read user types?',
+            'write'  => 'Can create/edit user types?',
+            'delete' => 'Can delete user types?',
+        ],
+    ],
 ];

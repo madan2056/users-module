@@ -1,7 +1,8 @@
 <?php namespace Anomaly\UsersModule\User\Security;
 
 use Anomaly\Streams\Platform\Addon\Extension\Extension;
-use Anomaly\UsersModule\User\Contract\UserInterface;
+/*use Anomaly\UsersModule\User\Contract\UserInterface;*/
+use Sbweb\UserModule\User\Contract\UserInterface;
 use Anomaly\UsersModule\User\Security\Contract\SecurityCheckInterface;
 use Symfony\Component\HttpFoundation\Response;
 

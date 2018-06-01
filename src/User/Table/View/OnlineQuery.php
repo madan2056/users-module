@@ -26,5 +26,4 @@ class OnlineQuery
             ->where('last_activity_at', '>', new Carbon('-10 minutes'))
             ->where('id', '!=', $auth->id());
     }
-
 }

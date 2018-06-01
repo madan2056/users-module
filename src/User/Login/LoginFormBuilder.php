@@ -1,7 +1,8 @@
 <?php namespace Anomaly\UsersModule\User\Login;
 
 use Anomaly\Streams\Platform\Ui\Form\FormBuilder;
-use Anomaly\UsersModule\User\Contract\UserInterface;
+/*use Anomaly\UsersModule\User\Contract\UserInterface;*/
+use Sbweb\UserModule\User\Contract\UserInterface;
 use Anomaly\UsersModule\User\UserSecurity;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -48,9 +49,8 @@ class LoginFormBuilder extends FormBuilder
      * @var array
      */
     protected $options = [
-        'redirect'        => '/',
-        'breadcrumb'      => false,
-        'success_message' => false,
+        'redirect'   => '/',
+        'breadcrumb' => false,
     ];
 
     /**
@@ -60,6 +60,7 @@ class LoginFormBuilder extends FormBuilder
      */
     public function onPost(UserSecurity $security)
     {
+
         $response = $security->attempt();
 
         if ($response instanceof Response) {
@@ -68,7 +69,10 @@ class LoginFormBuilder extends FormBuilder
 
             $this->setSave(false);
         }
+
     }
+
+
 
     /**
      * Get the user.
@@ -77,6 +81,8 @@ class LoginFormBuilder extends FormBuilder
      */
     public function getUser()
     {
+
+
         return $this->user;
     }
 
@@ -88,6 +94,7 @@ class LoginFormBuilder extends FormBuilder
      */
     public function setUser(UserInterface $user)
     {
+
         $this->user = $user;
 
         return $this;

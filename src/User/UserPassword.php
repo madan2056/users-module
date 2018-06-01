@@ -1,7 +1,11 @@
 <?php namespace Anomaly\UsersModule\User;
 
 use Anomaly\UsersModule\User\Command\ValidatePasswordStrength;
-use Anomaly\UsersModule\User\Contract\UserInterface;
+/*use Anomaly\UsersModule\User\Contract\UserInterface;*/
+
+use Anomaly\UsersModule\User\Password\AdminPasswordFormBuilder;
+use Sbweb\UserModule\User\ChangePassword\Command\SelfPasswordChange;
+use Sbweb\UserModule\User\Contract\UserInterface;
 use Anomaly\UsersModule\User\Password\Command\InvalidatePassword;
 use Anomaly\UsersModule\User\Password\Command\ResetPassword;
 use Anomaly\UsersModule\User\Password\Command\SendInvalidatedEmail;
@@ -76,6 +80,7 @@ class UserPassword
      */
     public function send(UserInterface $user, $reset = '/')
     {
+
         return $this->dispatch(new SendResetEmail($user, $reset));
     }
 
@@ -92,6 +97,11 @@ class UserPassword
         $this->dispatch(new InvalidatePassword($user));
 
         return $this->dispatch(new SendInvalidatedEmail($user, $reset));
+    }
+
+    public function change(UserInterface $user, AdminPasswordFormBuilder $builder)
+    {
+        return $this->dispatch(new SelfPasswordChange($user, $builder));
     }
 
 }
